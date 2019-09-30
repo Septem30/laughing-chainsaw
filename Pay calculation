@@ -1,0 +1,30 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Salary Calculator</title>
+    <script>
+    function computeSalary(){
+	var Pay_rate = document.getElementById('Pay_rate').value;
+    var Hours_worked = document.getElementById('Hours_worked').value;
+	var Gross_pay = (Pay_rate * Hours_worked);
+    var Tax_rate = document.getElementById('Tax_rate').value;
+    var Net_pay = (Gross_pay * Tax_rate).toFixed(2);
+	Net_pay = Net_pay.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	document.getElementById('Net_pay').innerHTML = "Net_pay = $"+Net_pay;    
+    }  
+     </script>
+</head>
+<body style="background-color:rgb(108, 165, 34)">
+    <p>Pay Rate: $<input id="Pay_rate" type="number" min="1" max="100" onchange="computeSalary()"></p>
+    <p>Hours Worked:<input id="Hours_worked" type="number" min="1" max="1000" value="1" step="1" onchange="computeSalary()"></p>
+    <p>Gross Pay: $<input id="Gross_pay" type="number" min="1" max="1100000" onchange="computeSalary()"></p>
+    <p>Tax Rate: <input id="Tax_rate" type="number" min="1" max="40" value="25" step=".1" onchange="computeSalary()">%</p>
+    <p>Net Pay: $<input id="Net_pay" type="number" min="1" max="1000000" onchange="computeSalary()"></p>
+    <h2 id="Net_pay"></h2>
+    <input type="reset" value="Clear" /><br />
+    Comments<textarea cols="25" rows="7" ></textarea>   
+</body>
+</html>
